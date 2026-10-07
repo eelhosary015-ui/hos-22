@@ -1,0 +1,286 @@
+{
+ "pass": 56,
+ "fail": 0,
+ "results": [
+  {
+   "name": "health returns 200",
+   "ok": true,
+   "detail": "status=200"
+  },
+  {
+   "name": "health.status === 'ok'",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "health.database === 'connected'",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "health proves a real DB round-trip (latency_ms present)",
+   "ok": true,
+   "detail": "latency_ms=1"
+  },
+  {
+   "name": "health.uptime_seconds is numeric",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "BUG-ERP-001: /api/test-sales no longer exists (404, not a secret dump)",
+   "ok": true,
+   "detail": "status=404"
+  },
+  {
+   "name": "no DATABASE_URL leaked by /api/test-sales",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "no endpoint echoes a real credential value (connection string / db password / jwt secret)",
+   "ok": true,
+   "detail": "clean"
+  },
+  {
+   "name": "anonymous /api/users matches the explicit bypass setting (bypass=true)",
+   "ok": true,
+   "detail": "status=200"
+  },
+  {
+   "name": "anonymous /api/system/diagnostics matches the explicit bypass setting (bypass=true)",
+   "ok": true,
+   "detail": "status=200"
+  },
+  {
+   "name": "GET /api/v2/warehouses/23/inventory returns 200",
+   "ok": true,
+   "detail": "status=200"
+  },
+  {
+   "name": "GET /api/warehouses/23/inventory returns 200 (V1 mount)",
+   "ok": true,
+   "detail": "status=200"
+  },
+  {
+   "name": "V1 inventory for wh 23 matches inventory_items count",
+   "ok": true,
+   "detail": "api=4 db=4"
+  },
+  {
+   "name": "V1 inventory 23 rows carry ingredient_name from a real JOIN",
+   "ok": true,
+   "detail": "first=TEST-ERP-MANGO"
+  },
+  {
+   "name": "GET /api/v2/warehouses/24/inventory returns 200",
+   "ok": true,
+   "detail": "status=200"
+  },
+  {
+   "name": "GET /api/warehouses/24/inventory returns 200 (V1 mount)",
+   "ok": true,
+   "detail": "status=200"
+  },
+  {
+   "name": "V1 inventory for wh 24 matches inventory_items count",
+   "ok": true,
+   "detail": "api=4 db=4"
+  },
+  {
+   "name": "V1 inventory 24 rows carry ingredient_name from a real JOIN",
+   "ok": true,
+   "detail": "first=TEST-ERP-MANGO"
+  },
+  {
+   "name": "dev auth bypass is explicitly enabled (DEV_AUTH_BYPASS=true)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "POST /api/customers returns 201 (was 500: column \"notes\" does not exist)",
+   "ok": true,
+   "detail": "status=201 body={\"id\":22,\"name\":\"TEST-ERP-CUSTOMER-901\",\"phone\":\"01199900888\",\"phone_2\":null,\"address\":\"TEST-ERP-ADDR\",\"total_orders\":0,\"total_spent\":\"0.00\",\"last_order_date\":n"
+  },
+  {
+   "name": "customer row really persisted in PostgreSQL",
+   "ok": true,
+   "detail": "{\"id\":22,\"name\":\"TEST-ERP-CUSTOMER-901\",\"phone\":\"01199900888\",\"email\":\"t901@test.local\",\"address\":\"TEST-ERP-ADDR\"}"
+  },
+  {
+   "name": "derived receivable equals the customer_transactions ledger sum (no phantom customers.balance column)",
+   "ok": true,
+   "detail": "api=3600.00 ledger=3600.00"
+  },
+  {
+   "name": "receivable is a real invoice-minus-payment computation, not a stored column",
+   "ok": true,
+   "detail": "invoices+payments over 1 row(s)"
+  },
+  {
+   "name": "customers.balance still absent (no hallucinated column was added)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "POST /api/customers without phone returns 400 (validated, not 500)",
+   "ok": true,
+   "detail": "status=400"
+  },
+  {
+   "name": "zero-quantity purchase request returns 422/400 (was 500)",
+   "ok": true,
+   "detail": "status=422 body={\"success\":false,\"error\":\"VALIDATION_ERROR\",\"message\":\"الكمية غير صحيحة للصنف TEST-ERP-MANGO: يجب أن تكون أكبر من صفر\"}"
+  },
+  {
+   "name": "zero-quantity response is a structured VALIDATION_ERROR",
+   "ok": true,
+   "detail": "{\"success\":false,\"error\":\"VALIDATION_ERROR\",\"message\":\"الكمية غير صحيحة للصنف TEST-ERP-MANGO: يجب أن تكون أكبر من صفر\"}"
+  },
+  {
+   "name": "rollback: no orphan purchase_request row was left behind",
+   "ok": true,
+   "detail": "before=43 after=43"
+  },
+  {
+   "name": "account 1141 (Raw Materials Inventory) exists",
+   "ok": true,
+   "detail": "{\"1140\":19,\"1141\":32,\"1142\":33,\"2110\":9,\"5100\":15}"
+  },
+  {
+   "name": "account 1142 (Finished Goods Inventory) exists",
+   "ok": true,
+   "detail": "{\"1140\":19,\"1141\":32,\"1142\":33,\"2110\":9,\"5100\":15}"
+  },
+  {
+   "name": "account_config.finished_goods_inventory points at 1142",
+   "ok": true,
+   "detail": "mapped=33 (1142=33)"
+  },
+  {
+   "name": "account_config.raw_materials_inventory points at 1141",
+   "ok": true,
+   "detail": "mapped=32 (1141=32)"
+  },
+  {
+   "name": "production journal legs are DISTINCT accounts (no Dr=Cr on one account)",
+   "ok": true,
+   "detail": "33 vs 32"
+  },
+  {
+   "name": "no production journal posts finished cost onto a raw-material account",
+   "ok": true,
+   "detail": "new-style production_order entries"
+  },
+  {
+   "name": "BUG-ERP-002: explicit products.ingredient_id link is available for resolution",
+   "ok": true,
+   "detail": "ambiguous name prefixes present=true"
+  },
+  {
+   "name": "POST /api/v2/hr/employees returns 201",
+   "ok": true,
+   "detail": "status=201"
+  },
+  {
+   "name": "employee create persists job_title (BUG-ERP-012)",
+   "ok": true,
+   "detail": "job_title=TEST-ERP-JOB"
+  },
+  {
+   "name": "employee create persists employee_code (BUG-ERP-012)",
+   "ok": true,
+   "detail": "employee_code=TEST-ERP-CODE-901"
+  },
+  {
+   "name": "employee create persists company_id + branch_id (BUG-ERP-012)",
+   "ok": true,
+   "detail": "company_id=1 branch_id=1"
+  },
+  {
+   "name": "employee create writes canonical basic_salary (BUG-ERP-010)",
+   "ok": true,
+   "detail": "basic_salary=5000.00"
+  },
+  {
+   "name": "attendance row exists with NOT NULL date (was failing: date NOT NULL)",
+   "ok": true,
+   "detail": "[{\"id\":15564,\"employee_id\":89,\"date\":\"2026-10-05T21:00:00.000Z\",\"check_in\":\"2026-10-06T07:04:57.051Z\",\"check_out\":\"2026-10-06T07:04:57.094Z\",\"action_type\":\"out\"}]"
+  },
+  {
+   "name": "attendance has exactly one row per (employee, date) — no duplicate clock-in row",
+   "ok": true,
+   "detail": "rows=1"
+  },
+  {
+   "name": "clock OUT updated the same row (check_out populated on close)",
+   "ok": true,
+   "detail": "check_in=Tue Oct 06 2026 10:04:57 GMT+0300 (Eastern European Summer Time) check_out=Tue Oct 06 2026 10:04:57 GMT+0300 (Eastern European Summer Time)"
+  },
+  {
+   "name": "repeated clock-in does not create a duplicate attendance row",
+   "ok": true,
+   "detail": "rows=1"
+  },
+  {
+   "name": "no attendance row anywhere has a NULL date",
+   "ok": true,
+   "detail": "null_dates=0"
+  },
+  {
+   "name": "no employee has conflicting non-zero salary vs basic_salary",
+   "ok": true,
+   "detail": "conflicts=0"
+  },
+  {
+   "name": "no employee is left with salary-only (basic_salary backfilled)",
+   "ok": true,
+   "detail": "salary_only=0"
+  },
+  {
+   "name": "payroll_records uses canonical basic_salary column",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "reports/sales works and reads orders.total + orders.timestamp (BUG-ERP-007)",
+   "ok": true,
+   "detail": "status=200 rows=3"
+  },
+  {
+   "name": "reports/sales revenue equals SQL SUM(orders.total) for the same window",
+   "ok": true,
+   "detail": "report=12143.52 sql=12143.52 orders=35"
+  },
+  {
+   "name": "reports/sales transaction count equals SQL COUNT(orders)",
+   "ok": true,
+   "detail": "report=35 sql=35"
+  },
+  {
+   "name": "reports/profitability returns revenue/costs/net_profit",
+   "ok": true,
+   "detail": "{\"sales\":12143.52,\"costs\":0,\"net_profit\":12143.52}"
+  },
+  {
+   "name": "every journal entry has SUM(debit) = SUM(credit)",
+   "ok": true,
+   "detail": "unbalanced=0"
+  },
+  {
+   "name": "journal_entries header totals match their journal_items legs",
+   "ok": true,
+   "detail": "mismatched=0"
+  },
+  {
+   "name": "GL-wide SUM(journal_items.debit) = SUM(journal_items.credit)",
+   "ok": true,
+   "detail": "debit=806603.56 credit=806603.56 diff=0"
+  },
+  {
+   "name": "legacy goods_receipt reference_id=79 rows still present (not deleted)",
+   "ok": true,
+   "detail": "count=5"
+  }
+ ]
+}

@@ -1,0 +1,163 @@
+{
+ "generated_at": "2026-10-06T07:04:58.591Z",
+ "purchase": {
+  "goods_receipts_value": "592814.50",
+  "goods_receipts_count": 48,
+  "purchase_orders_value": "587924.50",
+  "purchase_orders_count": 50
+ },
+ "inventory": {
+  "value": "562057.79",
+  "rows": 605,
+  "qty": "9243.30",
+  "top_warehouses": [
+   {
+    "id": 2,
+    "name": "مخزن الزقازيق",
+    "value": "190830.00",
+    "qty": "1877.00"
+   },
+   {
+    "id": 13,
+    "name": "مخزن الحصري",
+    "value": "130749.50",
+    "qty": "1241.00"
+   },
+   {
+    "id": 16,
+    "name": "مخزن xxx",
+    "value": "104935.65",
+    "qty": "1921.00"
+   },
+   {
+    "id": 18,
+    "name": "مخزن تجريبي ",
+    "value": "39230.00",
+    "qty": "960.00"
+   },
+   {
+    "id": 8,
+    "name": "مخزن بلبيس ",
+    "value": "30528.72",
+    "qty": "296.70"
+   },
+   {
+    "id": 21,
+    "name": "مخزن تيسيت 50",
+    "value": "16053.74",
+    "qty": "319.00"
+   },
+   {
+    "id": 10,
+    "name": "مخزن رشوان",
+    "value": "15000.00",
+    "qty": "602.00"
+   },
+   {
+    "id": 23,
+    "name": "TEST-ERP-RAW-WH",
+    "value": "10250.00",
+    "qty": "990.00"
+   }
+  ]
+ },
+ "production": {
+  "runs": 17,
+  "run_cost": "10415.69",
+  "run_qty": "146.00",
+  "executed_orders": 16,
+  "executed_order_cost": "10327.56",
+  "new_style_journals": [
+   {
+    "id": 266,
+    "ref": "PRD-202610-00258",
+    "source_id": 32,
+    "distinct_accounts": 2,
+    "debit": "48.02",
+    "credit": "48.02"
+   },
+   {
+    "id": 263,
+    "ref": "PRD-202610-00258",
+    "source_id": 31,
+    "distinct_accounts": 2,
+    "debit": "48.06",
+    "credit": "48.06"
+   },
+   {
+    "id": 260,
+    "ref": "PRD-202610-00258",
+    "source_id": 30,
+    "distinct_accounts": 2,
+    "debit": "48.09",
+    "credit": "48.09"
+   }
+  ],
+  "legacy_same_account_journals_untouched": 14
+ },
+ "sales": {
+  "sales_orders": 1,
+  "delivery_notes": 8,
+  "delivery_cogs": "851.64",
+  "delivery_amount": "772.34",
+  "posted_deliveries": 7,
+  "posted_delivery_cogs": "851.64",
+  "invoices": 5,
+  "invoice_revenue": "209.76",
+  "invoice_cogs": "172.22",
+  "pos_orders": 711,
+  "pos_revenue": "81350.52"
+ },
+ "treasury": {
+  "net": "-25187.42",
+  "transactions": 27,
+  "by_type": [
+   {
+    "type": "cash_out",
+    "count": 18,
+    "amount": "-26173.00"
+   },
+   {
+    "type": "cash_in",
+    "count": 8,
+    "amount": "1360.42"
+   },
+   {
+    "type": "adjustment",
+    "count": 1,
+    "amount": "50000.00"
+   }
+  ]
+ },
+ "suppliers": {
+  "stored_balance_sum": "552462.46",
+  "suppliers": 26,
+  "transactions": 84,
+  "transactions_amount": "639256.46"
+ },
+ "customers": {
+  "derived_receivable": "5846.00",
+  "ledger_rows": 33
+ },
+ "general_ledger": {
+  "entries": 124,
+  "header_debit": "806603.56",
+  "header_credit": "806603.56",
+  "items": 282,
+  "item_debit": "806603.56",
+  "item_credit": "806603.56",
+  "balanced": true,
+  "diff": "0.00",
+  "cogs_account_5100_net": "888.14",
+  "inventory_accounts_net": "15402.86",
+  "ap_account_2110_net": "263151.96",
+  "revenue_accounts_net": "12579.17",
+  "duplicate_source_journals": 0,
+  "duplicate_delivery_journals": 0
+ },
+ "trial_balance_check": {
+  "total_debit": "806603.56",
+  "total_credit": "806603.56",
+  "difference": "0.00"
+ }
+}
